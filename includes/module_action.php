@@ -18,9 +18,9 @@
 ?>
 <?
 //include "../login_check.php";
+include "../../../config/config.php";
 include "../_info_.php";
-include "/usr/share/FruityWifi/www/config/config.php";
-include "/usr/share/FruityWifi/www/functions.php";
+include "../../../functions.php";
 
 include "options_config.php";
 
@@ -50,14 +50,16 @@ if($service != "") {
     
     if ($action == "start") {
         
-	$exec = "/etc/init.d/nessusd start > /dev/null 2 &";
-        exec("$bin_danger \"$exec\"" );
+        $exec = "/etc/init.d/nessusd start > /dev/null 2 &";
+        //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+        exec_fruitywifi($exec);
         
     } else if($action == "stop") {
         // STOP MODULE
 
-	$exec = "/etc/init.d/nessusd stop";
-        exec("$bin_danger \"$exec\"" );
+        $exec = "/etc/init.d/nessusd stop";
+        //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+        exec_fruitywifi($exec);
 
     }
 
